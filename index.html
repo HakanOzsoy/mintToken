@@ -27,7 +27,7 @@
 
         async function mintToken() {
             const contractABI = [/* Your contract ABI here */];
-            const contractAddress = "YOUR_CONTRACT_ADDRESS";
+            const contractAddress = "0x35Ab2c3eE9b398CB81222e7a5D349152c381D1Ea";
             const contract = new web3.eth.Contract(contractABI, contractAddress);
             const accounts = await web3.eth.getAccounts();
             const amount = document.getElementById("mintAmount").value;
