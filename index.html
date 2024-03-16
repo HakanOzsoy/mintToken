@@ -33,9 +33,11 @@
             
             const contract = new web3.eth.Contract(contractABI, contractAddress);
             const accounts = await web3.eth.getAccounts();
-            const amount = document.getElementById("mintAmount").value;
             
-            contract.methods.mint(/* Parameters based on your contract, like amount */).send({ from: accounts[0] })
+            const amountInEther = document.getElementById("mintAmount").value;
+            const amountInWei = web3.utils.toWei(amountInEther, 'ether');
+            
+            contract.methods.mint(amountInWei).send({ from: accounts[0] })
                 .then(function(receipt) {
                     console.log(receipt);
                     alert("Mint successful!");
@@ -49,6 +51,7 @@
 <body>
     <h1>Mint Your Token</h1>
     <p id="walletStatus">Wallet not connected. Please connect your wallet.</p>
+    <p>21:25</p>
     <button onclick="connectWallet()">Connect Wallet</button>
     <br>
     <label for="mintAmount">Amount to Mint:</label>
